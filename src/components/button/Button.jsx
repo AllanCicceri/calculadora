@@ -1,24 +1,15 @@
 import './Button.css'
+import { CalculatorContext } from '../context/display-context'
+import {useContext} from 'react'
 
 function Button({label, buttonClass}){
-    // const {displayState, setDisplayState} = useContext(DisplayContext)
+    const [displayState, setDisplayState] = useContext(CalculatorContext)
     
     const handleButtonClick = e => {
-        // if(buttonClass === "-functions"){
-        //     if(label === "C"){
-        //         setDisplayState(0)
-        //     }
-            
-        //     return
-        // }
-
-        // if(buttonClass === "-operation"){
-        //     return
-        // }
-
-        // const newValue = (displayState === 0)?label:displayState + label
-        // setDisplayState(newValue)
-
+        let value = displayState
+        value = value === '0' ? label : value + label
+        console.log(value)
+        setDisplayState(value)
     }
 
     return(
